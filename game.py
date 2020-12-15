@@ -5,7 +5,8 @@ from weapons import weapons_master_list
 
 class Game:
     def __init__(self):
-        self.introduction = """There has been a murder at the old spooky mansion and you have been called in to investigate. The suspects have been ordered to stay where they are and the murder weapon has yet to be found."""
+        self.introduction = """There has been a murder at the old spooky mansion and you have been called in to investigate. 
+        The suspects have been ordered to stay where they are and the murder weapon has yet to be found."""
         self.rooms = rooms_master_list
         self.suspects = suspects_master_list
         self.weapons = weapons_master_list
@@ -31,6 +32,10 @@ class Game:
         self.investigator = Investigator()
         self.investigator.location = self.murder_room
         self.playing = True
+        self.good_end = "Congratulations! You solved the mystery! !sus! is arrested and convicted of murder!"
+        self.bad_end = "You accuse !sus! and take them away in handcuffs. Later that night your boss calls you to fire you for such a ridiculous accusation. You are now being sued by !sus!."
+        self.missed_weapon_end = "You accuse !sus!, and they are arrested and taken away. However during trial is able to soundly disprove that !wep! was the weapon used. !sus! is set free perhaps to kill again."
+        self.missed_murderer_end = "You accuse !sus!, and they are quickly arrested and taken away. During trail there are many hole's in the prosecution's story. !sus! continues to deny their guilt. However with the murder weapon on display, and with a confident accusation of an experienced investigator the jury votes guilty and puts !sus! away for life."
     
     def look_around(self):
         room = self.investigator.location
@@ -80,7 +85,7 @@ class Game:
         choice = int(input("Who would you like to talk to?"))
         talking_to = room.characters_present[choice]
         if talking_to.is_the_murderer:
-            description = talking_to.introduction + self.murder_weapon.suspect_evidence + talking_to.intro_end
+            description = talking_to.introduction + talking_to.insert_pronouns(self.murder_weapon.suspect_evidence) + talking_to.intro_end
         else:
             description = talking_to.introduction + talking_to.replacement_detail + talking_to.intro_end
         print(description)
@@ -93,7 +98,7 @@ class Game:
             print("%d. Leave" % q)
             choice = int(input("What do you ask?"))
             if choice == q:
-                print("You leave %s to their own designs." % talking_to.name)
+                print(talking_to.insert_pronouns("You leave %s to !posadj! own designs." % talking_to.name))
                 break
             else:
                 print("%s you ask." % talking_to.questions[choice])
@@ -131,18 +136,15 @@ class Game:
     def end(self, suspect, weapon):
         self.playing = False
         if suspect.is_the_murderer and weapon.is_the_murder_weapon:
-            ending = "Congratulations! You solved the mystery! %s is arrested and convicted of murder!" % (suspect.name)
+            ending =  self.good_end
         elif suspect.is_the_murderer and weapon.is_the_murder_weapon == False:
-            ending = """You accuse %s, and they are arrested and taken away. However during trial is able to soundly disprove that
-            %s was the weapon used. %s is set free perhaps to kill again.""" % (suspect.name, weapon.name, suspect.name)
+            ending =  self.missed_weapon_end
         elif suspect.is_the_murderer == False and weapon.is_the_murder_weapon:
-            ending = """You accuse %s, and they are quickly arrested and taken away. During trail there are many hole's in the prosecution's story. 
-            %s continues to deny their guilt. However with the murder weapon on display, and with a confident accusation of an experienced investigator 
-            the jury votes guilty and puts %s away for life.""" % (suspect.name, suspect.name, suspect.name)
+            ending = self.missed_murderer_end
         elif suspect.is_the_murderer == False and weapon.is_the_murder == False:
-            ending = """You accuse %s and take them away in handcuffs. Later that night your boss calls you to fire you for such a ridiculous accusation. 
-            You are now being sued by %s""" % (suspect.name, suspect.name)
-        print(ending)
+            ending = self.bad_end
+        print(ending.replace("!sus!", suspect.name).replace("!wep!", weapon.name))
+
     
     def main(self):
         print(self.introduction)

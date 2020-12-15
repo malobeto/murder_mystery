@@ -3,6 +3,7 @@ introduction = "This should be the opening lines of your mystery."
 characters = [
     {
         "name": "the name of the character",
+        "pronouns": ["Subject/!sub!", "Object/!obj!", "Possesive Adjective/!posadj!", "Possessive/!pos!", "Reflexive/!ref!"],
         "description": "This is a brief description that will pop up when the investigator first enters a room they are in",
         "weapon_evidence": "This is the evidence that they will leave on the weapon",
         "body_evidence": "This is the evidence that they will leave on the body",
@@ -37,7 +38,7 @@ rooms = [
     }
 ]
 
-good_end = "This is the outcome if you've guessed the murderer and the murder weapon correctly."
+good_end = "This is the outcome if you've guessed the murderer and the murder weapon correctly. In endings use !sus! to insert suspect's name, and !wep! to insert weapon name."
 bad_end = "This is the ending if you missed both murderer and murder weapon."
 missed_weapon_end = "This is the end if you missed the murder weapon but picked the right murderer"
 missed_murderer_end = "This is the end if you accused the wrong person but found the right murder weapon"
