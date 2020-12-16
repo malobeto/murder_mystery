@@ -1,0 +1,136 @@
+{
+    "introduction": "You stand at the head of the feast table over the body of Demitri the empress' advisor in economic matters. Moments before everyone had been wrapped up in the dancing and the feast. How had the assassin managed to kill in such a crowd without being seen? Was Demetri the true target or was this assassin really going for the empress? As the court necromancer it's up to you to find out!",
+    "suspects": [
+        {
+            "name": "Seymon",
+            "pronouns": ["he", "him", "his", "his", "himself"],
+            "description": "Seymon, the empress' diplomatic advisor keeps to the edges of the room. He always seems to be able to strike an imposing figure when he wants and fade into the background when he chooses. Right now he seems to be doing the latter",
+            "weapon_evidence": "When you examine it closely there are minescule flakes of a white powder on the hilt.",
+            "body_evidence": "The death must have happened in an instant. There's not a single sign of struggle anywhere to be found.",
+            "introduction": "Seymon is a tall older man in his sixties or seventies. Dispite his age he still stands tall and moves gracefully. He's dressed in fine attire, but nothing so flashy as to draw attention away from the empress.",
+            "replacement_detail": "As you get a closer look at him you can see that he looks quite tired, but is doing everything to hide it.",
+            "intro_end": "He gives a solemn nod as you approach. \"I hope you get to the bottom of this. Please tell me what I can do to help.\"",
+            "questions": [
+                "You look tired.",
+                "Who might want Demetri dead?",
+                "How could someone kill in the middle of the ball without being seen?"
+                ],
+            "responses": [
+                "\"These past few months have worn on me I admit.\" he says dusting something off his white gloves, \"I hope to take a few days vacation once this is all over and the empress can spare me for that long.\" ",
+                "\"I honestly don't know. He was quite good at his job for one so young. It could have been anyone looking to weaken the empress' position. I would look to the families first, and try to see who has the most to gain by putting more strain on the empress and the rest of her advisors.\"",
+                "\"It would take a very adept assassin to pull something like this off for sure. But we have the wealthiest people in the world gathered in one room. Any of the families could have hired such an assassin.\""
+                ]
+        },
+        {
+            "name": "Rubis",
+            "pronouns": ["he", "him", "his", "his", "himself"],
+            "description": "Lord Rubis of house Videt stands just to the side. His stony face doesn't betray anything but his mysterious blue eyes narrow and flick about the room.",
+            "weapon_evidence": "There is a slight herbacious scent lingering. You might not detect it if not for you keep nose. Upon pondering you think it smells like tea used to treat throat colds and mild fevers.",
+            "body_evidence": "It was set up almost as if it were a trap. Like the assassin new exactly the moves Demetri would make and set up a fatal accident for him.",
+            "introduction": "Lord Rubis is not much older than you, but he towers over you and seems to carry the air of someone who knows they have authority. He wears a well tailored vest with a kestrel, the symbol of his house, on the right breast.",
+            "replacement_detail": "He is the empress' suitor that everyone most expects to win her hand, however you have heard that they do not get along as expected.",
+            "intro_end": "He gives a stoic nod as you approach and tries to meet your eye, but you manage to avoid it. You've heard rumors that the Videt's magical eyes can put anyone who looks into them under some sort of spell. \"Lady Necromancer, I understand you must question us all.\"",
+            "questions": [
+                "I hear your eyes can look into the future.",
+                "Did you see anything?",
+                "What did you think of Demetri?"
+                ],
+            "responses": [
+                "\"I... Do you really expect me to answer questions like that? What does that have to do with your investigation?\"",
+                "\"Unfortunately I was distracted at the time. We were having a dance together remember? If I did I would have acted on it.\"",
+                "\"I barely spoke to him. Everything I know about him is from what the empress has told me. He seemed competent enough at his job I suppose.\""
+                ]
+        },
+        {
+            "name": "Elke",
+            "pronouns": ["she", "her", "her", "hers", "herself"],
+            "description": "Lady Elke of house Ocuntna is doing the best she can to comfort her sister flora. Dispite the grusome scene she is staying remarkably calm.",
+            "weapon_evidence": "There is a hint of a floral scent lingering on it.",
+            "body_evidence": "There are large bruises on Demetri's chest. Like someone incredibly strong hit him in the diaphragm to keep him from screaming out just before killing him.",
+            "introduction": "This is an introduction used when the you first talk to the character.",
+            "replacement_detail": "This is a detail that is inserted between the two intro halves if the character is not the murderer. Make sure it makes sense with the rest of the sentence.",
+            "intro_end": "This is the end of the intro and the start of your conversation with the character. Use \" to make quotation marks inside the string quotes.",
+            "questions": [
+                "These are questions you may ask this character",
+                "They should be lined up so the first question gets the first response"
+                ],
+            "responses": [
+                "These are responses to the questions",
+                "For instance this will be how the suspect replies to the second question"
+                ]
+        },
+        {
+            "name": "Zuza",
+            "pronouns": ["he", "him", "his", "his", "himself"],
+            "description": "This is a brief description that will pop up when the investigator first enters a room they are in",
+            "weapon_evidence": "This is the evidence that they will leave on the weapon",
+            "body_evidence": "This is the evidence that they will leave on the body",
+            "introduction": "This is an introduction used when the you first talk to the character.",
+            "replacement_detail": "This is a detail that is inserted between the two intro halves if the character is not the murderer. Make sure it makes sense with the rest of the sentence.",
+            "intro_end": "This is the end of the intro and the start of your conversation with the character. Use \" to make quotation marks inside the string quotes.",
+            "questions": [
+                "These are questions you may ask this character",
+                "They should be lined up so the first question gets the first response"
+                ],
+            "responses": [
+                "These are responses to the questions",
+                "For instance this will be how the suspect replies to the second question"
+                ]
+        },
+        {
+            "name": "Pricilla",
+            "pronouns": ["she", "her", "her", "hers", "herself"],
+            "description": "This is a brief description that will pop up when the investigator first enters a room they are in",
+            "weapon_evidence": "This is the evidence that they will leave on the weapon",
+            "body_evidence": "This is the evidence that they will leave on the body",
+            "introduction": "This is an introduction used when the you first talk to the character.",
+            "replacement_detail": "This is a detail that is inserted between the two intro halves if the character is not the murderer. Make sure it makes sense with the rest of the sentence.",
+            "intro_end": "This is the end of the intro and the start of your conversation with the character. Use \" to make quotation marks inside the string quotes.",
+            "questions": [
+                "These are questions you may ask this character",
+                "They should be lined up so the first question gets the first response"
+                ],
+            "responses": [
+                "These are responses to the questions",
+                "For instance this will be how the suspect replies to the second question"
+                ]
+        },
+        {
+            "name": "Ionni",
+            "pronouns": ["she", "her", "her", "hers", "herself"],
+            "description": "This is a brief description that will pop up when the investigator first enters a room they are in",
+            "weapon_evidence": "This is the evidence that they will leave on the weapon",
+            "body_evidence": "This is the evidence that they will leave on the body",
+            "introduction": "This is an introduction used when the you first talk to the character.",
+            "replacement_detail": "This is a detail that is inserted between the two intro halves if the character is not the murderer. Make sure it makes sense with the rest of the sentence.",
+            "intro_end": "This is the end of the intro and the start of your conversation with the character. Use \" to make quotation marks inside the string quotes.",
+            "questions": [
+                "These are questions you may ask this character",
+                "They should be lined up so the first question gets the first response"
+                ],
+            "responses": [
+                "These are responses to the questions",
+                "For instance this will be how the suspect replies to the second question"
+                ]
+        }
+    ],
+    "weapons": [
+        {
+            "name": "the name of the weapon",
+            "description": "A short description of the weapon",
+            "body_evidence": "This is the method of death that will indicate what sort of weapon you should be looking for",
+            "suspect_evidence": "This is the evidence that the weapon will leave on the guilty suspect. Make sure it lines up gramatically with the replacement_detail"
+        }
+    ],
+    "rooms": [
+        {
+            "name": "rame of the room",
+            "description": "A description for when you enter a room.",
+            "hiding_spot": "where items may be hidden in the room"
+        }
+    ],
+    "good_end": "This is the outcome if you've guessed the murderer and the murder weapon correctly. In endings use !sus! to insert suspect's name, and !wep! to insert weapon name.",
+    "bad_end": "This is the ending if you missed both murderer and murder weapon.",
+    "missed_weapon_end": "This is the end if you missed the murder weapon but picked the right murderer",
+    "missed_murderer_end": "This is the end if you accused the wrong person but found the right murder weapon"
+}
