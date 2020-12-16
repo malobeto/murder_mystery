@@ -1,18 +1,15 @@
 from random import choice
-from rooms import rooms_master_list
-from characters import suspects_master_list, Investigator
-from weapons import weapons_master_list
+from characters import Investigator
 
 class Game:
-    def __init__(self):
-        self.introduction = """There has been a murder at the old spooky mansion and you have been called in to investigate. 
-        The suspects have been ordered to stay where they are and the murder weapon has yet to be found."""
-        self.rooms = rooms_master_list
-        self.suspects = suspects_master_list
-        self.weapons = weapons_master_list
-        self.murderer = choice(suspects_master_list)
-        self.murder_weapon = choice(weapons_master_list)
-        self.murder_room = choice(rooms_master_list)
+    def __init__(self, config):
+        self.introduction = config.introduction
+        self.rooms = config.rooms_master_list
+        self.suspects = config.suspects_master_list
+        self.weapons = config.weapons_master_list
+        self.murderer = choice(config.suspects_master_list)
+        self.murder_weapon = choice(config.weapons_master_list)
+        self.murder_room = choice(config.rooms_master_list)
         self.murder_room.dead_body = True
         self.murder_weapon.is_the_murder_weapon = True
         self.murderer.is_the_murderer = True
@@ -128,7 +125,7 @@ class Game:
             weapon_accused = self.investigator.inventory[weapon_choice]
             print("Are you sure it was %s, with %s." % (suspect_accused.name, weapon_accused.name))
             confirm = input("Yes or no?")
-            if confirm == "Yes":
+            if confirm.lower == "yes":
                 self.end(suspect_accused, weapon_accused)
             else:
                 print("It's too early to say for sure yet.")
@@ -159,5 +156,3 @@ class Game:
             choice = int(input("What would you like to do?"))
             room_actions[choice]()
 
-new_game = Game()
-new_game.main()
