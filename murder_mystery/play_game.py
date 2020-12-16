@@ -3,6 +3,7 @@ from os import listdir
 from .game import Game
 from .config import Config
 
+
 def new_game():
     game_sets = listdir("murder_mystery/game_sets")
     g = 0
