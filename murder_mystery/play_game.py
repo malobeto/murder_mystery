@@ -1,6 +1,6 @@
 from os import listdir
 
-from game import Game
+from game.py import Game
 from config import Config
 
 def new_game():
