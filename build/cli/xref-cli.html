@@ -156,7 +156,7 @@ imports:
  &#8226;   <a href="#keyword">keyword</a>
  &#8226;   <a href="#linecache">linecache</a>
  &#8226;   <a href="#locale">locale</a>
- &#8226;   <a href="#murder_mystery.play_game">murder_mystery.play_game</a>
+ &#8226;   <a href="#murder_mystery">murder_mystery</a>
  &#8226;   <a href="#operator">operator</a>
  &#8226;   <a href="#pyi_rth_multiprocessing.py">pyi_rth_multiprocessing.py</a>
  &#8226;   <a href="#re">re</a>
@@ -623,6 +623,23 @@ imported by:
 imported by:
     <a href="#io">io</a>
  &#8226;   <a href="#zipimport">zipimport</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="_json"></a>
+  <tt>_json</tt> <span class="moduletype"><tt>/usr/lib/python3.8/lib-dynload/_json.cpython-38-x86_64-linux-gnu.so</tt></span>  <div class="import">
+imports:
+    <a href="#json.decoder">json.decoder</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#json.decoder">json.decoder</a>
+ &#8226;   <a href="#json.encoder">json.encoder</a>
+ &#8226;   <a href="#json.scanner">json.scanner</a>
 
   </div>
 
@@ -2446,6 +2463,7 @@ imported by:
  &#8226;   <a href="#encodings.utf_8_sig">encodings.utf_8_sig</a>
  &#8226;   <a href="#encodings.uu_codec">encodings.uu_codec</a>
  &#8226;   <a href="#encodings.zlib_codec">encodings.zlib_codec</a>
+ &#8226;   <a href="#json">json</a>
  &#8226;   <a href="#lib2to3.pgen2.tokenize">lib2to3.pgen2.tokenize</a>
  &#8226;   <a href="#pickle">pickle</a>
  &#8226;   <a href="#plistlib">plistlib</a>
@@ -2678,17 +2696,6 @@ imports:
   <div class="import">
 imported by:
     <a href="#concurrent.futures">concurrent.futures</a>
-
-  </div>
-
-</div>
-
-<div class="node">
-  <a name="config"></a>
-  <a target="code" href="" type="text/plain"><tt>config</tt></a>
-<span class="moduletype">MissingModule</span>  <div class="import">
-imported by:
-    <a href="#murder_mystery.play_game">murder_mystery.play_game</a>
 
   </div>
 
@@ -6520,17 +6527,6 @@ imported by:
 </div>
 
 <div class="node">
-  <a name="game"></a>
-  <a target="code" href="" type="text/plain"><tt>game</tt></a>
-<span class="moduletype">MissingModule</span>  <div class="import">
-imported by:
-    <a href="#murder_mystery.play_game">murder_mystery.play_game</a>
-
-  </div>
-
-</div>
-
-<div class="node">
   <a name="gc"></a>
   <tt>gc</tt> <span class="moduletype"><i>(builtin module)</i></span>  <div class="import">
 imports:
@@ -6928,7 +6924,7 @@ imports:
  &#8226;   <a href="#importlib">importlib</a>
  &#8226;   <a href="#importlib._bootstrap">importlib._bootstrap</a>
  &#8226;   <a href="#importlib._bootstrap_external">importlib._bootstrap_external</a>
- &#8226;   <a href="#importlib.machinery">importlib.machinery</a>
+ &#8226;   <a href="#importlib.abc">importlib.abc</a>
  &#8226;   <a href="#sys">sys</a>
  &#8226;   <a href="#types">types</a>
  &#8226;   <a href="#warnings">warnings</a>
@@ -7012,7 +7008,8 @@ imports:
   </div>
   <div class="import">
 imported by:
-    <a href="#importlib.metadata">importlib.metadata</a>
+    <a href="#importlib">importlib</a>
+ &#8226;   <a href="#importlib.metadata">importlib.metadata</a>
  &#8226;   <a href="#importlib.util">importlib.util</a>
  &#8226;   <a href="#zipimport">zipimport</a>
 
@@ -7034,7 +7031,6 @@ imports:
   <div class="import">
 imported by:
     <a href="#ctypes.util">ctypes.util</a>
- &#8226;   <a href="#importlib">importlib</a>
  &#8226;   <a href="#importlib.abc">importlib.abc</a>
  &#8226;   <a href="#inspect">inspect</a>
  &#8226;   <a href="#pkgutil">pkgutil</a>
@@ -7273,6 +7269,86 @@ imported by:
 <span class="moduletype">MissingModule</span>  <div class="import">
 imported by:
     <a href="#platform">platform</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="json"></a>
+  <a target="code" href="/usr/lib/python3.8/json/__init__.py" type="text/plain"><tt>json</tt></a>
+<span class="moduletype">Package</span>  <div class="import">
+imports:
+    <a href="#codecs">codecs</a>
+ &#8226;   <a href="#json.decoder">json.decoder</a>
+ &#8226;   <a href="#json.encoder">json.encoder</a>
+ &#8226;   <a href="#json.scanner">json.scanner</a>
+ &#8226;   <a href="#warnings">warnings</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#json.decoder">json.decoder</a>
+ &#8226;   <a href="#json.encoder">json.encoder</a>
+ &#8226;   <a href="#json.scanner">json.scanner</a>
+ &#8226;   <a href="#murder_mystery.config">murder_mystery.config</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="json.decoder"></a>
+  <a target="code" href="/usr/lib/python3.8/json/decoder.py" type="text/plain"><tt>json.decoder</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#_json">_json</a>
+ &#8226;   <a href="#json">json</a>
+ &#8226;   <a href="#json.scanner">json.scanner</a>
+ &#8226;   <a href="#re">re</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#_json">_json</a>
+ &#8226;   <a href="#json">json</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="json.encoder"></a>
+  <a target="code" href="/usr/lib/python3.8/json/encoder.py" type="text/plain"><tt>json.encoder</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#_json">_json</a>
+ &#8226;   <a href="#json">json</a>
+ &#8226;   <a href="#re">re</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#json">json</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="json.scanner"></a>
+  <a target="code" href="/usr/lib/python3.8/json/scanner.py" type="text/plain"><tt>json.scanner</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#_json">_json</a>
+ &#8226;   <a href="#json">json</a>
+ &#8226;   <a href="#re">re</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#json">json</a>
+ &#8226;   <a href="#json.decoder">json.decoder</a>
 
   </div>
 
@@ -8285,8 +8361,78 @@ imported by:
 
 <div class="node">
   <a name="murder_mystery"></a>
-  <a target="code" href="-" type="text/plain"><tt>murder_mystery</tt></a>
-<span class="moduletype">NamespacePackage</span>  <div class="import">
+  <a target="code" href="/home/robert/Programming/python/murder_mystery/murder_mystery/__init__.py" type="text/plain"><tt>murder_mystery</tt></a>
+<span class="moduletype">Package</span>  <div class="import">
+imports:
+    <a href="#murder_mystery.play_game">murder_mystery.play_game</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#cli.py">cli.py</a>
+ &#8226;   <a href="#murder_mystery.characters">murder_mystery.characters</a>
+ &#8226;   <a href="#murder_mystery.config">murder_mystery.config</a>
+ &#8226;   <a href="#murder_mystery.game">murder_mystery.game</a>
+ &#8226;   <a href="#murder_mystery.play_game">murder_mystery.play_game</a>
+ &#8226;   <a href="#murder_mystery.rooms">murder_mystery.rooms</a>
+ &#8226;   <a href="#murder_mystery.sentence_formatting">murder_mystery.sentence_formatting</a>
+ &#8226;   <a href="#murder_mystery.weapons">murder_mystery.weapons</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="murder_mystery.characters"></a>
+  <a target="code" href="/home/robert/Programming/python/murder_mystery/murder_mystery/characters.py" type="text/plain"><tt>murder_mystery.characters</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#murder_mystery">murder_mystery</a>
+ &#8226;   <a href="#murder_mystery.rooms">murder_mystery.rooms</a>
+ &#8226;   <a href="#murder_mystery.sentence_formatting">murder_mystery.sentence_formatting</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#murder_mystery.config">murder_mystery.config</a>
+ &#8226;   <a href="#murder_mystery.game">murder_mystery.game</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="murder_mystery.config"></a>
+  <a target="code" href="/home/robert/Programming/python/murder_mystery/murder_mystery/config.py" type="text/plain"><tt>murder_mystery.config</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#json">json</a>
+ &#8226;   <a href="#murder_mystery">murder_mystery</a>
+ &#8226;   <a href="#murder_mystery.characters">murder_mystery.characters</a>
+ &#8226;   <a href="#murder_mystery.rooms">murder_mystery.rooms</a>
+ &#8226;   <a href="#murder_mystery.weapons">murder_mystery.weapons</a>
+ &#8226;   <a href="#os">os</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#murder_mystery.play_game">murder_mystery.play_game</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="murder_mystery.game"></a>
+  <a target="code" href="/home/robert/Programming/python/murder_mystery/murder_mystery/game.py" type="text/plain"><tt>murder_mystery.game</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#murder_mystery">murder_mystery</a>
+ &#8226;   <a href="#murder_mystery.characters">murder_mystery.characters</a>
+ &#8226;   <a href="#random">random</a>
+
+  </div>
+  <div class="import">
 imported by:
     <a href="#murder_mystery.play_game">murder_mystery.play_game</a>
 
@@ -8299,15 +8445,66 @@ imported by:
   <a target="code" href="/home/robert/Programming/python/murder_mystery/murder_mystery/play_game.py" type="text/plain"><tt>murder_mystery.play_game</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
-    <a href="#config">config</a>
- &#8226;   <a href="#game">game</a>
- &#8226;   <a href="#murder_mystery">murder_mystery</a>
+    <a href="#murder_mystery">murder_mystery</a>
+ &#8226;   <a href="#murder_mystery.config">murder_mystery.config</a>
+ &#8226;   <a href="#murder_mystery.game">murder_mystery.game</a>
  &#8226;   <a href="#os">os</a>
 
   </div>
   <div class="import">
 imported by:
-    <a href="#cli.py">cli.py</a>
+    <a href="#murder_mystery">murder_mystery</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="murder_mystery.rooms"></a>
+  <a target="code" href="/home/robert/Programming/python/murder_mystery/murder_mystery/rooms.py" type="text/plain"><tt>murder_mystery.rooms</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#murder_mystery">murder_mystery</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#murder_mystery.characters">murder_mystery.characters</a>
+ &#8226;   <a href="#murder_mystery.config">murder_mystery.config</a>
+ &#8226;   <a href="#murder_mystery.weapons">murder_mystery.weapons</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="murder_mystery.sentence_formatting"></a>
+  <a target="code" href="/home/robert/Programming/python/murder_mystery/murder_mystery/sentence_formatting.py" type="text/plain"><tt>murder_mystery.sentence_formatting</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#murder_mystery">murder_mystery</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#murder_mystery.characters">murder_mystery.characters</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="murder_mystery.weapons"></a>
+  <a target="code" href="/home/robert/Programming/python/murder_mystery/murder_mystery/weapons.py" type="text/plain"><tt>murder_mystery.weapons</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#murder_mystery">murder_mystery</a>
+ &#8226;   <a href="#murder_mystery.rooms">murder_mystery.rooms</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#murder_mystery.config">murder_mystery.config</a>
 
   </div>
 
@@ -8560,6 +8757,7 @@ imported by:
  &#8226;   <a href="#multiprocessing.shared_memory">multiprocessing.shared_memory</a>
  &#8226;   <a href="#multiprocessing.spawn">multiprocessing.spawn</a>
  &#8226;   <a href="#multiprocessing.util">multiprocessing.util</a>
+ &#8226;   <a href="#murder_mystery.config">murder_mystery.config</a>
  &#8226;   <a href="#murder_mystery.play_game">murder_mystery.play_game</a>
  &#8226;   <a href="#netrc">netrc</a>
  &#8226;   <a href="#ntpath">ntpath</a>
@@ -9081,6 +9279,7 @@ imports:
 imported by:
     <a href="#email.generator">email.generator</a>
  &#8226;   <a href="#email.utils">email.utils</a>
+ &#8226;   <a href="#murder_mystery.game">murder_mystery.game</a>
  &#8226;   <a href="#secrets">secrets</a>
  &#8226;   <a href="#tempfile">tempfile</a>
 
@@ -9141,6 +9340,9 @@ imported by:
  &#8226;   <a href="#http.cookiejar">http.cookiejar</a>
  &#8226;   <a href="#importlib.metadata">importlib.metadata</a>
  &#8226;   <a href="#inspect">inspect</a>
+ &#8226;   <a href="#json.decoder">json.decoder</a>
+ &#8226;   <a href="#json.encoder">json.encoder</a>
+ &#8226;   <a href="#json.scanner">json.scanner</a>
  &#8226;   <a href="#lib2to3.pgen2.literals">lib2to3.pgen2.literals</a>
  &#8226;   <a href="#lib2to3.pgen2.tokenize">lib2to3.pgen2.tokenize</a>
  &#8226;   <a href="#locale">locale</a>
@@ -10762,6 +10964,7 @@ imported by:
  &#8226;   <a href="#importlib.abc">importlib.abc</a>
  &#8226;   <a href="#importlib.util">importlib.util</a>
  &#8226;   <a href="#inspect">inspect</a>
+ &#8226;   <a href="#json">json</a>
  &#8226;   <a href="#locale">locale</a>
  &#8226;   <a href="#logging">logging</a>
  &#8226;   <a href="#multiprocessing.forkserver">multiprocessing.forkserver</a>

@@ -34,7 +34,7 @@
  [],
  False,
  False,
- 1608133015,
+ 1608136711,
  [('run',
    '/home/robert/.local/lib/python3.8/site-packages/PyInstaller/bootloader/Linux-64bit/run',
    'EXECUTABLE')])
