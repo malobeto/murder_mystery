@@ -1,4 +1,4 @@
-from rooms import Room
+from .rooms import Room
 
 class Weapon():
     is_the_murder_weapon = False

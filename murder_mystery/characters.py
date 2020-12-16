@@ -1,5 +1,5 @@
-from rooms import Room
-from sentence_formatting import capitalize_first
+from .rooms import Room
+from .sentence_formatting import capitalize_first
 
 
 class Investigator():

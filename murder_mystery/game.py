@@ -1,5 +1,5 @@
 from random import choice
-from characters import Investigator
+from .characters import Investigator
 
 class Game:
     def __init__(self, config):

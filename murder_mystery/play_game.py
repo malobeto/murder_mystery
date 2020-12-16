@@ -1,10 +1,10 @@
 from os import listdir
 
-from game import Game
-from config import Config
+from .game import Game
+from .config import Config
 
 def new_game():
-    game_sets = listdir("game_sets")
+    game_sets = listdir("murder_mystery/game_sets")
     g = 0
     for game_set in game_sets:
         print("%d. %s" % (g, game_set[:-5].title()))
