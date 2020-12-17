@@ -28,33 +28,53 @@
             "suspect_evidence": "!sub! seems to be keeping !posadj! hand in !posadj! pocket, but you notice a bit of a red stain on the cuff of !posadj! sleeve."
         },
 		{
-            "name": "guitar string",
+            "name": "instument string",
             "description": "There's a thin but very dark bruise along his throat.",
-            "body_evidence": "This is the method of death that will indicate what sort of weapon you should be looking for",
-            "suspect_evidence": "This is the evidence that the weapon will leave on the guilty suspect. Make sure it lines up gramatically with the replacement_detail"
+            "body_evidence": "His face is purple and there's a thin but very dark bruise along his throat.",
+            "suspect_evidence": "You notice a thin bruise running in a circle around the palm and backside of !posadj! hand."
         },
 		{
             "name": "poisoned needle",
             "description": "A short description of the weapon",
-            "body_evidence": "This is the method of death that will indicate what sort of weapon you should be looking for",
-            "suspect_evidence": "This is the evidence that the weapon will leave on the guilty suspect. Make sure it lines up gramatically with the replacement_detail"
+            "body_evidence": "There is no readily apparant cause of death. It's almost like he just keeled over, but on close inspection you spy a tiny red dot along his neck.",
+            "suspect_evidence": "Your keen nose detects the slightest hint of roasted almonds about !obj!."
         },
 		{
             "name": "push dagger",
-            "description": "A short description of the weapon",
-            "body_evidence": "This is the method of death that will indicate what sort of weapon you should be looking for",
-            "suspect_evidence": "This is the evidence that the weapon will leave on the guilty suspect. Make sure it lines up gramatically with the replacement_detail"
+            "description": "A small push dagger. It's weathered and has seen some use, but the blade is well maintained and wiped clean of dirt and dust.",
+            "body_evidence": "He has been killed by a fast yet brutal stab through the heart.",
+            "suspect_evidence": "You notice a small fold in !posadj! sleeve that could perhaps have been a pocket to conceal something."
         }
     ],
     "rooms": [
         {
-            "name": "rame of the room",
-            "description": "A description for when you enter a room.",
-            "hiding_spot": "where items may be hidden in the room"
+            "name": "The dinning table",
+            "description": "The long mahogany dining table overlooks the starry dance floor and is filled with plates and half eaten dishes. It seems there's quite a variety of good food that will be going to waste tonight. Nobody has an appitite left.",
+            "hiding_spot": "Slipped beneath a tray of smoked salmon"
+        },
+		{
+            "name": "The dance floor",
+            "description": "High above a huge chandalier casts sparkling light throughout the room. The floor of the dance floor is made of some sort of polished crystal, and when you look down you can see stars as if you're dancing on the night sky.",
+            "hiding_spot": "Hidden behind the doorway to the stage"
+        },
+		{
+            "name": "The kitchens",
+            "description": "There's a doorway that leads directly from the dining area down to the kitchens. The air is full of delicious scents of garlic, ginger, spice and baked bread. In the center on a table there's a massive layered cake in the shape of the palace. There's a handfull of servants still working on it despite the guards having locked down the area.",
+            "hiding_spot": "Pushed into the bottom layer of the cake"
+        },
+		{
+            "name": "The entryway",
+            "description": "The entryway is now blocked by guards. Everyone's coats and hats are stored in closets to the side, and there are two sets of stairs. One leading to the dance floor and the other leading to the dining area.",
+            "hiding_spot": "Slipped inside the pocket of Lord Rubis' coat"
+        },
+		{
+            "name": "The stage",
+            "description": "The stage is an area raised about six feet or so off of the dance floor. A number of bards and musicians have their instuments along the walls. You notice that one of the lutes is missing a string. You believe it's the one that was being played by Zuza.",
+            "hiding_spot": "Slipped inside the lute that was missing the string"
         }
     ],
-    "good_end": "This is the outcome if you've guessed the murderer and the murder weapon correctly. In endings use !sus! to insert suspect's name, and !wep! to insert weapon name.",
-    "bad_end": "This is the ending if you missed both murderer and murder weapon.",
-    "missed_weapon_end": "This is the end if you missed the murder weapon but picked the right murderer",
-    "missed_murderer_end": "This is the end if you accused the wrong person but found the right murder weapon"
+    "good_end": "On your accusation !sus! is taken away and with the evidence of the !wep! no one can deny their guilt. They are throne into the dungeons for a few weeks before they are ransomed back to their family to face their own justice. The swiftness of the investigation dissuades any further assassinations in the palace, and gives everyone a newfound respect in the empress' and her necromancer's capabilities.",
+    "bad_end": "Your accusation of !sus! is not taken seriously. The empress is forced to dismiss it otherwise face offending the families.",
+    "missed_weapon_end": "You accused !sus!, however they are able to cast doubt on their guilt by disproving !wep! as the way Demetri was killed. They are released and both you and the empress lose considerable respect in the eyes of the nobility.",
+    "missed_murderer_end": "On your accusation !sus! is arrested and with the evidence of !wep! they are kept in the palace dungeons. However their family insists on their innocence and are able to gather others to their side. The empress is forced to make the choice to release them or face war. Either way she loses considerable respect from everyone."
 }
