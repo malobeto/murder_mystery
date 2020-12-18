@@ -29,10 +29,10 @@ class Game:
         self.investigator = Investigator()
         self.investigator.location = self.murder_room
         self.playing = True
-        self.good_end = "Congratulations! You solved the mystery! !sus! is arrested and convicted of murder!"
-        self.bad_end = "You accuse !sus! and take them away in handcuffs. Later that night your boss calls you to fire you for such a ridiculous accusation. You are now being sued by !sus!."
-        self.missed_weapon_end = "You accuse !sus!, and they are arrested and taken away. However during trial is able to soundly disprove that !wep! was the weapon used. !sus! is set free perhaps to kill again."
-        self.missed_murderer_end = "You accuse !sus!, and they are quickly arrested and taken away. During trail there are many hole's in the prosecution's story. !sus! continues to deny their guilt. However with the murder weapon on display, and with a confident accusation of an experienced investigator the jury votes guilty and puts !sus! away for life."
+        self.good_end = config.good_end
+        self.bad_end = config.bad_end
+        self.missed_weapon_end = config.missed_weapon_end
+        self.missed_murderer_end = config.missed_murderer_end
     
     def look_around(self):
         room = self.investigator.location
@@ -54,14 +54,21 @@ class Game:
 
     def search(self):
         room = self.investigator.location
-        for weapon in room.items:
-            print("You find a %s." % weapon.description)
-            self.investigator.inventory.append(weapon)
-        for weapon in room.hidden_items:
-            print("%s you find a %s. %s" % (room.hiding_spot, weapon.description, self.murderer.weapon_evidence))
-            self.investigator.inventory.append(weapon)
+        if len(room.items) < 1:
+            print("You don't find anything of note when you search %s" % room.name)
+        else:
+            for weapon in room.items:
+                print("You find a %s." % weapon.description)
+                self.investigator.inventory.append(weapon)
+                room.items.remove(weapon)
+            for weapon in room.hidden_items:
+                print("%s you find a %s. %s" % (room.hiding_spot, weapon.description, self.murderer.weapon_evidence))
+                self.investigator.inventory.append(weapon)
+                room.hidden_items.remove(weapon)
 
     def move(self):
+        current_location = self.investigator.location
+        self.rooms.remove(current_location)
         r = 0
         for room in self.rooms:
             print("%d. %s" % (r, room.name))
@@ -69,6 +76,7 @@ class Game:
         choice = int(input("Where to?"))
         self.investigator.location = self.rooms[choice]
         print("You move to the %s." % self.investigator.location.name)
+        self.rooms.append(current_location)
 
     def talk(self):
         s = 0
@@ -138,7 +146,7 @@ class Game:
             ending =  self.missed_weapon_end
         elif suspect.is_the_murderer == False and weapon.is_the_murder_weapon:
             ending = self.missed_murderer_end
-        elif suspect.is_the_murderer == False and weapon.is_the_murder == False:
+        elif suspect.is_the_murderer == False and weapon.is_the_murder_weapon == False:
             ending = self.bad_end
         print(ending.replace("!sus!", suspect.name).replace("!wep!", weapon.name))
 
