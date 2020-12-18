@@ -55,10 +55,10 @@ class Game:
     def search(self):
         room = self.investigator.location
         for weapon in room.items:
-            print("You find a %s./n" % weapon.description)
+            print("You find a %s." % weapon.description)
             self.investigator.inventory.append(weapon)
         for weapon in room.hidden_items:
-            print("%s you find a %s. %s %s" % (room.hiding_spot, weapon.name, weapon.description, self.murderer.weapon_evidence))
+            print("%s you find a %s. %s" % (room.hiding_spot, weapon.description, self.murderer.weapon_evidence))
             self.investigator.inventory.append(weapon)
 
     def move(self):
@@ -125,7 +125,7 @@ class Game:
             weapon_accused = self.investigator.inventory[weapon_choice]
             print("Are you sure it was %s, with %s." % (suspect_accused.name, weapon_accused.name))
             confirm = input("Yes or no?")
-            if confirm.lower == "yes":
+            if confirm.lower() == "yes":
                 self.end(suspect_accused, weapon_accused)
             else:
                 print("It's too early to say for sure yet.")
