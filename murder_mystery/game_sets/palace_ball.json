@@ -47,70 +47,78 @@
             "description": "Lady Elke of house Ocuntna is doing the best she can to comfort her sister flora. Dispite the grusome scene she is staying remarkably calm.",
             "weapon_evidence": "There is a hint of a floral scent lingering on it.",
             "body_evidence": "There are large bruises on Demetri's chest. Like someone incredibly strong hit him in the diaphragm to keep him from screaming out just before killing him.",
-            "introduction": "This is an introduction used when the you first talk to the character.",
-            "replacement_detail": "This is a detail that is inserted between the two intro halves if the character is not the murderer. Make sure it makes sense with the rest of the sentence.",
-            "intro_end": "This is the end of the intro and the start of your conversation with the character. Use \" to make quotation marks inside the string quotes.",
+            "introduction": "Lady Elke takes a step away from Flora as you approach. She towers over you at at least seven feet tall, as do all the nobles of her bloodline.",
+            "replacement_detail": "She curtsies and as she does you catch a thick bruise on her forearm before she pulls her sleeve up to cover it.",
+            "intro_end": "\"Miss necromancer! What can we do to help the investigation? I want to get my sister out of here as fast as possible.\"",
             "questions": [
-                "These are questions you may ask this character",
-                "They should be lined up so the first question gets the first response"
+                "What do you think of Demetri?",
+                "What motive could someone have to kill him?",
+				"I heard you're quite strong and not bad with a sword."
                 ],
             "responses": [
-                "These are responses to the questions",
-                "For instance this will be how the suspect replies to the second question"
+                "\"He seemed very nice. He complimented me and Flora on our perfume. Flora makes it herself from flowers back home, and I think it meant a lot to her.\"",
+                "\"I haven't the slightest clue. We thought this was going to be all fun and dances and a bit of courting amoungst the nobility not... this...\"",
+				"Elke will blush and cover her face with a hand. \"Oh... well I suppose who you compare me to. My family are all strong, but I can't hold a candle to my aunt Valeria.\""
                 ]
         },
         {
             "name": "Zuza",
             "pronouns": ["he", "him", "his", "his", "himself"],
-            "description": "This is a brief description that will pop up when the investigator first enters a room they are in",
-            "weapon_evidence": "This is the evidence that they will leave on the weapon",
-            "body_evidence": "This is the evidence that they will leave on the body",
-            "introduction": "This is an introduction used when the you first talk to the character.",
-            "replacement_detail": "This is a detail that is inserted between the two intro halves if the character is not the murderer. Make sure it makes sense with the rest of the sentence.",
-            "intro_end": "This is the end of the intro and the start of your conversation with the character. Use \" to make quotation marks inside the string quotes.",
+            "description": "Zuza, a bard hired by the Zacut family, is busy comforting some of the lesser noble ladies.",
+            "weapon_evidence": "As you run your finger along it and find a bit of wood dust. It smells like ebony.",
+            "body_evidence": "You find a few flakes of ebony wood in his hair.",
+            "introduction": "Zuza pretends not to see you at first but once you clear your throat he excuses himself from his lady friends to come talk to you.",
+            "replacement_detail": "You notice a slight jingle to his pockets as he approaches.",
+            "intro_end": "\"Miss Necromancer. Do you need something from me?\"",
             "questions": [
-                "These are questions you may ask this character",
-                "They should be lined up so the first question gets the first response"
+                "I noticed there was a string missing from your lute.",
+                "You seem to be having fun.",
+				"Are you loyal to the Zacut family?"
                 ],
             "responses": [
-                "These are responses to the questions",
-                "For instance this will be how the suspect replies to the second question"
+                "\"Yes I dropped it amidst the commotion. It's aweful. It took a chip out of it and you can't get the ebody I need to fix it around here.\"",
+                "I don't know what you mean. Those poor ladies were beside themselves after the death.",
+				"\"This is just a job. I get paid and I sing and play my lute. Do you think the palace will compensate me for my extra time here tonight?\" He eyes you a bit expectantly."
                 ]
         },
         {
             "name": "Pricilla",
             "pronouns": ["she", "her", "her", "hers", "herself"],
-            "description": "This is a brief description that will pop up when the investigator first enters a room they are in",
-            "weapon_evidence": "This is the evidence that they will leave on the weapon",
-            "body_evidence": "This is the evidence that they will leave on the body",
-            "introduction": "This is an introduction used when the you first talk to the character.",
-            "replacement_detail": "This is a detail that is inserted between the two intro halves if the character is not the murderer. Make sure it makes sense with the rest of the sentence.",
-            "intro_end": "This is the end of the intro and the start of your conversation with the character. Use \" to make quotation marks inside the string quotes.",
+            "description": "Your cousin Lady Pricilla of house Vonye is busy talking with her twin brother Reynard. She gives a smile and a wave your way when she sees you.",
+            "weapon_evidence": "It has a slight scent to it reminding you of a scent Lord Rubis was wearing earlier.",
+            "body_evidence": "There's a smudge of something red on the back of his neck. It's not blood. More like paint or makeup of some sort.",
+            "introduction": "As you approach Pricilla is reapplying her lipstick.",
+            "replacement_detail": "As you get closer you detect a sweet perfume that reminds you of a warm hearth and spiced treats during the cold months.",
+            "intro_end": "She smiles at you as you approach. \"How do I look?\" she asks, \"When it all went down I covered my mouth and ended up smudging my lipstick. Well have you found anything out yes miss Necromancer?\"",
             "questions": [
-                "These are questions you may ask this character",
-                "They should be lined up so the first question gets the first response"
+                "Are you and Reynard alright?",
+                "You know a lot about the families Pricilla who do you think did it?",
+				"You look great as always."
                 ],
             "responses": [
-                "These are responses to the questions",
-                "For instance this will be how the suspect replies to the second question"
+                "\"Yes. I mean it is gastly business and I can't believe anyone would be so rude to assassinate the poor man in the middle of the ball. At the very least they could have waited for the dancing and the feasting to be over! I hope you catch the bastard. They interrupted your dance with Lord Rubis right? Did you smell him at least. I thought his cologne came close to one of our own. Not quite of course.\"",
+                "\"Me? Well they all have motive I think in one way or another. I think the Nekkims bear looking into, as does that dirty vagabond of a bard the Zacuts brought.\"",
+				"\"Ah thank you. I know I do but I do love hearing those words out of your mouth.\""
                 ]
         },
         {
             "name": "Ionni",
             "pronouns": ["she", "her", "her", "hers", "herself"],
-            "description": "This is a brief description that will pop up when the investigator first enters a room they are in",
-            "weapon_evidence": "This is the evidence that they will leave on the weapon",
-            "body_evidence": "This is the evidence that they will leave on the body",
-            "introduction": "This is an introduction used when the you first talk to the character.",
-            "replacement_detail": "This is a detail that is inserted between the two intro halves if the character is not the murderer. Make sure it makes sense with the rest of the sentence.",
-            "intro_end": "This is the end of the intro and the start of your conversation with the character. Use \" to make quotation marks inside the string quotes.",
+            "description": "Ionni is just barely in her teens. She seemed frightened initially but has since taken to amusing herself with a deck of cards she must have smuggled in.",
+            "weapon_evidence": "There's a bit of thin transparent string tied around one end.",
+            "body_evidence": "There's a playing card hidden beneath the body. It's the queen of hearts.",
+            "introduction": "As you come up behind Ionni and annouce yourself she will jump a few feet into the air and scramble to pick up her cards.",
+            "replacement_detail": "You notice she has a small pouce in her dress where she seems to have concealed a number of items used in stage magic like invisible string, cards, and even a small red handkerchief.",
+            "intro_end": "She sniffles and wipes at her eyes as she looks down at her feet. \"Did you find them yet miss Necromancer? I want to go back to my rooms...\"",
             "questions": [
-                "These are questions you may ask this character",
-                "They should be lined up so the first question gets the first response"
+                "I know you're faking those tears Ionni.",
+                "Did you know Demetri at all?",
+				"Who do you think did it?"
                 ],
             "responses": [
-                "These are responses to the questions",
-                "For instance this will be how the suspect replies to the second question"
+                "\"W-what?\" she stammers at first but when she sees you aren't buying it she drops the act. \"Okay yeah... I mean I'm sad but not enough to cry. I just didn't want you suspecting me because I wasn't sad. I do really want to go back to my rooms. It's creepy here with a killer around.\" The fear in her voice does seem genuine to you.",
+                "\"I met him once or twice. He really liked my magic tricks so I liked him. You can bring him back eventually right?\"",
+				"\"Honestly? Okay I think it was your cousins over there. The Vonye family is sneaky I know... I know you don't want to hear that but you should look into them if you're really a good investigator.\""
                 ]
         }
     ],
