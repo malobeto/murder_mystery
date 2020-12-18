@@ -55,7 +55,7 @@ class Game:
     def search(self):
         room = self.investigator.location
         for weapon in room.items:
-            print("You find a %s. %s/n" % (weapon.name, weapon.description))
+            print("You find a %s./n" % weapon.description)
             self.investigator.inventory.append(weapon)
         for weapon in room.hidden_items:
             print("%s you find a %s. %s %s" % (room.hiding_spot, weapon.name, weapon.description, self.murderer.weapon_evidence))

@@ -1,9 +1,10 @@
 class Room():
-    items = []
-    hidden_items = []
     dead_body = False
-    characters_present = []
+
     def __init__(self, model):
+        self.items = []
+        self.hidden_items = []
+        self.characters_present = []
         for k, v in model.items():
             setattr(self, k, v)
 

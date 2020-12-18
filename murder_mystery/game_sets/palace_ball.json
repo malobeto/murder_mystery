@@ -125,19 +125,19 @@
     "weapons": [
         {
             "name": "dinner knife",
-            "description": "A dinner knife that has been broken into a razor sharp edge.",
+            "description": "a dinner knife that has been broken into a razor sharp edge.",
             "body_evidence": "His throat is cleanly cut.",
             "suspect_evidence": "!sub! seems to be keeping !posadj! hand in !posadj! pocket, but you notice a bit of a red stain on the cuff of !posadj! sleeve."
         },
 		{
             "name": "instument string",
-            "description": "There's a thin but very dark bruise along his throat.",
+            "description": "a strong and sturdy string that once belonged to a guitar or a lute.",
             "body_evidence": "His face is purple and there's a thin but very dark bruise along his throat.",
             "suspect_evidence": "You notice a thin bruise running in a circle around the palm and backside of !posadj! hand."
         },
 		{
             "name": "poisoned needle",
-            "description": "A short description of the weapon",
+            "description": "a small thin needle. Perhaps for sewing or perhaps for something more sinister.",
             "body_evidence": "There is no readily apparant cause of death. It's almost like he just keeled over, but on close inspection you spy a tiny red dot along his neck.",
             "suspect_evidence": "Your keen nose detects the slightest hint of roasted almonds about !obj!."
         },
