@@ -12,7 +12,7 @@ class Game:
         self.rooms = []
         self.suspects = []
         self.weapons = []
-        with open("murder_mystery/game_sets/" + game_set, "r") as f:
+        with open("murder_mystery/game_sets/" + game_set + ".json", "r") as f:
             set_data = json.load(f)
         self.introduction = set_data["introduction"]
         self.good_end = set_data["good_end"]
@@ -25,7 +25,7 @@ class Game:
             self.weapons.append(Weapon(weapon, self))
         for room in set_data["rooms"]:
             self.rooms.append(Room(room, self))
-        self.murderer = choice(self.rooms)
+        self.murderer = choice(self.suspects)
         self.murder_weapon = choice(self.weapons)
         self.murder_room = choice(self.rooms)
         self.murder_room.dead_body = True
@@ -46,8 +46,8 @@ class Game:
                 location.items.append(weapon)
         self.investigator = Investigator()
         self.investigator.location = self.murder_room
-        self.murderer_choice
-        self.murder_weapon_choice
+        self.murderer_choice = None
+        self.murder_weapon_choice = None
         self.playing = True
         self.base_actions = []
 
@@ -61,14 +61,14 @@ class Game:
             text =  text + "And in the center of the room there is a dead body."
             text =  text + "Would you like to take a closer look? Yes or no?"
 
-        def yes(self):
+        def yes():
             weapon_evidence = self.murder_weapon.body_evidence
             suspect_evidence = self.murderer.body_evidence
-            text = "The dead body lying in the center of the room has not been dead long. %s %s" % (weapon_evidence, suspect_evidence))
+            text = "The dead body lying in the center of the room has not been dead long. %s %s" % (weapon_evidence, suspect_evidence)
             choices = self.base_actions
             return text, choices
 
-        def no(self):
+        def no():
             text = "Ew gross who wants to see a dead body?!"
             choices = self.base_actions
             return text, choices
@@ -77,6 +77,7 @@ class Game:
         return text, choices
 
     def search(self):
+        text = ""
         room = self.investigator.location
         if len(room.items) < 1:
             text = "You don't find anything of note when you search %s" % room.name
@@ -132,7 +133,7 @@ class Game:
             self.playing = False
             if self.murderer_choice.is_the_murderer and self.murder_weapon_choice.is_the_murder_weapon:
                 text =  self.good_end
-            elif self.murderer_choice.is_the_murderer and self.murder_weapon_choice.is_the_murder_weapon: == False:
+            elif self.murderer_choice.is_the_murderer and self.murder_weapon_choice.is_the_murder_weapon == False:
                 text =  self.missed_weapon_end
             elif self.murderer_choice.is_the_murderer == False and self.murder_weapon_choice.is_the_murder_weapon:
                 text = self.missed_murderer_end
@@ -148,7 +149,7 @@ class Game:
         choices = [yes, no]
         return text, choices
     
-    def introduction(self):
+    def start(self):
         text = self.introduction
         self.base_actions = [self.look_around, self.search, self.move, self.talk, self.accuse]
         choices = self.base_actions

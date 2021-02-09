@@ -100,5 +100,3 @@ professor_plum = {
     "questions": ["question1", "question2"],
     "responses": ["response1", "response2"]
 }
-
-suspects_master_list = [Suspect(miss_scarlett), Suspect(colonel_mustard), Suspect(professor_plum)]

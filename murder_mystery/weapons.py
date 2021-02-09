@@ -23,4 +23,3 @@ knife = {
     "suspect_evidence": "!pos! hand is wrapped in a heavy white bandage. It seems like it could be a pretty nasty injury.",
 }
 
-weapons_master_list = [Weapon(knife)]

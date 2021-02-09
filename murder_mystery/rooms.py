@@ -26,6 +26,3 @@ kitchen = {
     "description": "This kitchen looks like a dangerous place.",
     "hiding_spot": "Burried in the ice tray in the freezer.",
 }
-
-
-rooms_master_list = [Room(library), Room(kitchen)]

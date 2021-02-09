@@ -1,6 +1,8 @@
 from tkinter import *
 from tkinter import scrolledtext
 
+from murder_mystery import gui_game as game
+
 window = Tk()
 
 action_buttons = []
@@ -35,15 +37,7 @@ def display_actions(functions):
 		action_buttons.append(Button(window, text=f.__name__, command=lambda f=f: update_game(f)))
 		action_buttons[n].grid(column=n+1, row=3)
 
-def another():
-	responses = [test]
-	return "Another test\n", responses
-
-def test():
-	responses = [another]
-	return "This is a test\n", responses
-
-actions = [test]
-display_actions(actions)
+game = game.Game("palace_ball")
+display_actions([game.start])
 
 window.mainloop()
