@@ -19,7 +19,8 @@ class Investigator():
 class Suspect():
     is_the_murderer = False
     location = Room
-    def __init__(self, model):
+    def __init__(self, model, game):
+        self.game = game 
         for k, v in model.items():
             setattr(self, k, v)
     
@@ -27,6 +28,39 @@ class Suspect():
         new_string = string.replace("!sub!", self.pronouns[0]).replace("!obj!", self.pronouns[1]).replace("!posadj!", self.pronouns[2]).replace("!pos!", self.pronouns[3]).replace("!ref!", self.pronouns[4])
         return capitalize_first(new_string)
 
+    def talk_to(self):
+        if self.is_the_murderer:
+            text = self.introduction + self.insert_pronouns(self.game.murder_weapon.suspect_evidence) + self.intro_end
+        else:
+            text = talking_to.introduction + talking_to.replacement_detail + talking_to.intro_end
+        choices = []
+        for i, question in enumerate(self.questions):
+            ask = lambda i, choices: (self.responses[i], choices)
+            ask.__name__ = question
+            choices.append(ask)
+
+        def exit(self):
+            choices = self.game.base_actions
+            text = "You leave %s to their own designs." % self.name
+            return text, choices
+
+        choices.append(exit)
+        text = text + "\nWhat would you like to ask?"
+        return text, choices
+
+    def accuse(self):
+        choices = []
+        if self.is_the_murderer:
+            self.game.murderer_choice = self
+        if len(game.invesigator.inventory) == 0:
+            text = "You might think that %s is the murderer, but you haven't found the murder weapon yet!" % self.name
+            choices = self.game.base_actions
+            return text, choices
+        for weapon in game.invesigator.inventory:
+            weapon.pick_as_the_murder_weapon.__name__ = weapon.name
+            choices.append(weapon.pick_as_the_murder_weapon)
+        text = "You accuse %s as the murderer. What about the murder weapon?" % self.name
+        return text, choices
 
 miss_scarlett = {
     "name": "Miss Scarlett",

@@ -3,9 +3,17 @@ from .rooms import Room
 class Weapon():
     is_the_murder_weapon = False
     location = Room
-    def __init__(self, model):
+    def __init__(self, model, game):
+        self.game = game
         for k, v in model.items():
             setattr(self, k, v)
+
+    def pick_as_murder_weapon(self):
+        choices = [self.game.end]
+        text = "You identify %s as the murder weapon."
+        if is_the_murder_weapon:
+            self.game.murder_weapon_choice = self
+        return text, choices
 
 knife = {
     "name": "knife",

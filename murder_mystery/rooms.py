@@ -1,15 +1,19 @@
 class Room():
     dead_body = False
 
-    def __init__(self, model):
+    def __init__(self, model, game):
+        self.game = game
         self.items = []
         self.hidden_items = []
         self.characters_present = []
         for k, v in model.items():
             setattr(self, k, v)
 
-    def move_to():
-        
+    def move_to(self):
+        self.game.investigator.location = self
+        text = "You move to %s." % self.name
+        choices = {}
+        return text, choices
 
 library = {
     "name": "library",

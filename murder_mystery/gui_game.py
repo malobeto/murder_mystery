@@ -1,15 +1,33 @@
 from random import choice
+import json
+import os
+
+from .rooms import Room
+from .weapons import Weapon
+from .characters import Suspect
 from .characters import Investigator
 
 class Game:
-    def __init__(self, config):
-        self.introduction = config.introduction
-        self.rooms = config.rooms_master_list
-        self.suspects = config.suspects_master_list
-        self.weapons = config.weapons_master_list
-        self.murderer = choice(config.suspects_master_list)
-        self.murder_weapon = choice(config.weapons_master_list)
-        self.murder_room = choice(config.rooms_master_list)
+    def __init__(self, game_set):
+        self.rooms = []
+        self.suspects = []
+        self.weapons = []
+        with open("murder_mystery/game_sets/" + game_set, "r") as f:
+            set_data = json.load(f)
+        self.introduction = set_data["introduction"]
+        self.good_end = set_data["good_end"]
+        self.bad_end = set_data["bad_end"]
+        self.missed_weapon_end = set_data["missed_weapon_end"]
+        self.missed_murderer_end = set_data["missed_murderer_end"]
+        for suspect in set_data["suspects"]:
+            self.suspects.append(Suspect(suspect, self))
+        for weapon in set_data["weapons"]:
+            self.weapons.append(Weapon(weapon, self))
+        for room in set_data["rooms"]:
+            self.rooms.append(Room(room, self))
+        self.murderer = choice(self.rooms)
+        self.murder_weapon = choice(self.weapons)
+        self.murder_room = choice(self.rooms)
         self.murder_room.dead_body = True
         self.murder_weapon.is_the_murder_weapon = True
         self.murderer.is_the_murderer = True
@@ -28,11 +46,11 @@ class Game:
                 location.items.append(weapon)
         self.investigator = Investigator()
         self.investigator.location = self.murder_room
+        self.murderer_choice
+        self.murder_weapon_choice
         self.playing = True
-        self.good_end = config.good_end
-        self.bad_end = config.bad_end
-        self.missed_weapon_end = config.missed_weapon_end
-        self.missed_murderer_end = config.missed_murderer_end
+        self.base_actions = []
+
     
     def look_around(self):
         room = self.investigator.location
@@ -43,16 +61,16 @@ class Game:
             text =  text + "And in the center of the room there is a dead body."
             text =  text + "Would you like to take a closer look? Yes or no?"
 
-        def yes():
+        def yes(self):
             weapon_evidence = self.murder_weapon.body_evidence
             suspect_evidence = self.murderer.body_evidence
             text = "The dead body lying in the center of the room has not been dead long. %s %s" % (weapon_evidence, suspect_evidence))
-            choices = []
+            choices = self.base_actions
             return text, choices
 
-        def no():
+        def no(self):
             text = "Ew gross who wants to see a dead body?!"
-            choices = []
+            choices = self.base_actions
             return text, choices
 
         choices = [yes, no]
@@ -71,104 +89,69 @@ class Game:
                 text = text + "%s you find a %s. %s" % (room.hiding_spot, weapon.description, self.murderer.weapon_evidence)
                 self.investigator.inventory.append(weapon)
                 room.hidden_items.remove(weapon)
-        choices = []
+        choices = self.base_actions
         return text, choices
 
     def move(self):
         current_location = self.investigator.location
         self.rooms.remove(current_location)
-        r = 0
+        choices = []
         for room in self.rooms:
-            print("%d. %s" % (r, room.name))
-            r += 1
-        choice = int(input("Where to?"))
-        self.investigator.location = self.rooms[choice]
-        print("You move to the %s." % self.investigator.location.name)
+            room.move_to.__name__ = room.name # Change the __name__ so that the button will be labeled properly
+            choices.append(room.move_to)
         self.rooms.append(current_location)
+        text = "Which room would you like to move to?"
+        return text, choices
 
     def talk(self):
-        s = 0
         room = self.investigator.location
+        choices = []
+        text = "Who would you like to talk to?"
         if len(room.characters_present) == 0:
-            print("There's no one here to talk to.")
-            return 0
+            text = "There's no one here to talk to."
+            return text, choices
         for suspect in room.characters_present:
-            print("%d. %s" % (s, suspect.name))
-            s += 1
-        choice = int(input("Who would you like to talk to?"))
-        talking_to = room.characters_present[choice]
-        if talking_to.is_the_murderer:
-            description = talking_to.introduction + talking_to.insert_pronouns(self.murder_weapon.suspect_evidence) + talking_to.intro_end
-        else:
-            description = talking_to.introduction + talking_to.replacement_detail + talking_to.intro_end
-        print(description)
-        talking = True
-        while talking:
-            q = 0
-            for question in talking_to.questions:
-                print("%d. %s" % (q, question)) 
-                q += 1
-            print("%d. Leave" % q)
-            choice = int(input("What do you ask?"))
-            if choice == q:
-                print(talking_to.insert_pronouns("You leave %s to !posadj! own designs." % talking_to.name))
-                break
-            else:
-                print("%s you ask." % talking_to.questions[choice])
-                print(talking_to.responses[choice])
+            suspect.talk_to.__name__ = suspect.name
+            choices.append(suspect.talk_to)
+        return text, choices
     
     def accuse(self):
-        s = 0
-        room = self.investigator.location
-        if len(room.characters_present) == 0:
-            print("There's no one here to accuse!")
-            return 0
-        else:    
-            for suspect in room.characters_present:
-                print("%d. %s" % (s, suspect.name))
-                s += 1
-            suspect_choice = int(input("Who would you like to choose?"))
-            suspect_accused = room.characters_present[suspect_choice]
-        if len(self.investigator.inventory) == 0:
-            print("You have not yet found any weapons.")
-            return 0
-        else:
-            w = 0
-            for weapon in self.investigator.inventory:
-                print("%d. %s" % (w, weapon.name))
-                w += 1
-            weapon_choice = int(input("Which weapon did they do it with?"))
-            weapon_accused = self.investigator.inventory[weapon_choice]
-            print("Are you sure it was %s, with %s." % (suspect_accused.name, weapon_accused.name))
-            confirm = input("Yes or no?")
-            if confirm.lower() == "yes":
-                self.end(suspect_accused, weapon_accused)
-            else:
-                print("It's too early to say for sure yet.")
+        choices = []
+        for suspect in self.suspects:
+            suspect.accuse.__name__ = suspect.name
+            choices.append(suspect.accuse)
+        text = "Who do you think dunit?"
+        return text, choices
 
-    def end(self, suspect, weapon):
-        self.playing = False
-        if suspect.is_the_murderer and weapon.is_the_murder_weapon:
-            ending =  self.good_end
-        elif suspect.is_the_murderer and weapon.is_the_murder_weapon == False:
-            ending =  self.missed_weapon_end
-        elif suspect.is_the_murderer == False and weapon.is_the_murder_weapon:
-            ending = self.missed_murderer_end
-        elif suspect.is_the_murderer == False and weapon.is_the_murder_weapon == False:
-            ending = self.bad_end
-        print(ending.replace("!sus!", suspect.name).replace("!wep!", weapon.name))
+    def end(self):
+        choices = []
+        text = "Are you sure that it was %s with %s." % (self.murderer_choice, self.murder_weapon_choice)
+        
+        def yes(self):
+            choices = []
+            self.playing = False
+            if self.murderer_choice.is_the_murderer and self.murder_weapon_choice.is_the_murder_weapon:
+                text =  self.good_end
+            elif self.murderer_choice.is_the_murderer and self.murder_weapon_choice.is_the_murder_weapon: == False:
+                text =  self.missed_weapon_end
+            elif self.murderer_choice.is_the_murderer == False and self.murder_weapon_choice.is_the_murder_weapon:
+                text = self.missed_murderer_end
+            elif self.murderer_choice.is_the_murderer == False and self.murder_weapon_choice.is_the_murder_weapon == False:
+                text = self.bad_end
+            return text, choices
 
+        def no(self):
+            choices = self.base_actions
+            text = "You're not sure. You better gather more evidence."
+            return text, choices
+
+        choices = [yes, no]
+        return text, choices
     
-    def main(self):
-        print(self.introduction)
-        room_actions = [self.look_around, self.search, self.move, self.talk, self.accuse]
-        room_actions_names = ["Look Around", "Search", "Move", "Talk", "Accuse"]
-        while self.playing:
-            input()
-            a = 0
-            for action in room_actions_names:
-                print("%d. %s" % (a, action))
-                a += 1
-            choice = int(input("What would you like to do?"))
-            room_actions[choice]()
+    def introduction(self):
+        text = self.introduction
+        self.base_actions = [self.look_around, self.search, self.move, self.talk, self.accuse]
+        choices = self.base_actions
+        return text, choices
+        
 
