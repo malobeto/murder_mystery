@@ -8,6 +8,9 @@ class Room():
         for k, v in model.items():
             setattr(self, k, v)
 
+    def move_to():
+        
+
 library = {
     "name": "library",
     "description": "This is a classic library.",
