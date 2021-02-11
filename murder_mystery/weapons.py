@@ -10,9 +10,8 @@ class Weapon():
 
     def pick_as_murder_weapon(self):
         choices = [self.game.end]
-        text = "You identify %s as the murder weapon."
-        if is_the_murder_weapon:
-            self.game.murder_weapon_choice = self
+        text = "You identify %s as the murder weapon." % self.name
+        self.game.murder_weapon_choice = self
         return text, choices
 
 knife = {

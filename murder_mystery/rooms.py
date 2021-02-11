@@ -12,7 +12,7 @@ class Room():
     def move_to(self):
         self.game.investigator.location = self
         text = "You move to %s." % self.name
-        choices = game.base_actions
+        choices = self.game.base_actions
         return text, choices
 
 library = {

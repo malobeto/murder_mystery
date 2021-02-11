@@ -7,8 +7,8 @@ window = Tk()
 
 action_buttons = []
 
-game_text = scrolledtext.ScrolledText(window, width=40, height=10)
-game_text.grid(column=1, row=1)
+game_text = scrolledtext.ScrolledText(window, width=120, height=40)
+game_text.grid(column=1, row=1, columnspan=5, sticky=W)
 
 def update_game(action):
 	"""
@@ -17,8 +17,10 @@ def update_game(action):
 	"""
 	global action_buttons
 	update = action()
-	game_text.insert(INSERT, "...\n")
+	game_text.insert(INSERT, "\n...\n")
 	game_text.insert(INSERT, update[0])
+	game_text.yview_moveto(1)
+
 	
 	for b in action_buttons:
 		b.destroy()

@@ -32,33 +32,33 @@ class Suspect():
         if self.is_the_murderer:
             text = self.introduction + self.insert_pronouns(self.game.murder_weapon.suspect_evidence) + self.intro_end
         else:
-            text = talking_to.introduction + talking_to.replacement_detail + talking_to.intro_end
+            text = self.introduction + self.replacement_detail + self.intro_end
         choices = []
         for i, question in enumerate(self.questions):
-            ask = lambda i, choices: (self.responses[i], choices)
+            ask = lambda text=self.responses[i]: (text, choices)
             ask.__name__ = question
             choices.append(ask)
 
-        def exit(self):
+        def exit():
             choices = self.game.base_actions
-            text = "You leave %s to their own designs." % self.name
+            text = self.insert_pronouns("You leave %s to !posadj! own designs." % self.name)
             return text, choices
 
         choices.append(exit)
         text = text + "\nWhat would you like to ask?"
         return text, choices
 
-    def accuse(self):
+    def accuse_murderer(self):
         choices = []
-        if self.is_the_murderer:
-            self.game.murderer_choice = self
-        if len(game.invesigator.inventory) == 0:
+        self.game.murderer_choice = self
+        if len(self.game.investigator.inventory) == 0:
             text = "You might think that %s is the murderer, but you haven't found the murder weapon yet!" % self.name
             choices = self.game.base_actions
             return text, choices
-        for weapon in game.invesigator.inventory:
-            weapon.pick_as_the_murder_weapon.__name__ = weapon.name
-            choices.append(weapon.pick_as_the_murder_weapon)
+        for weapon in self.game.investigator.inventory:
+            choice = lambda w=weapon: w.pick_as_murder_weapon()
+            choice.__name__ = weapon.name
+            choices.append(choice)
         text = "You accuse %s as the murderer. What about the murder weapon?" % self.name
         return text, choices
 

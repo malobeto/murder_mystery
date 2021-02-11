@@ -55,11 +55,9 @@ class Game:
     def look_around(self):
         room = self.investigator.location
         text = room.description + "\n"
+        choices = self.base_actions
         for suspect in room.characters_present:
             text = text + suspect.description + "\n"
-        if room.dead_body:
-            text =  text + "And in the center of the room there is a dead body."
-            text =  text + "Would you like to take a closer look? Yes or no?"
 
         def yes():
             weapon_evidence = self.murder_weapon.body_evidence
@@ -73,7 +71,11 @@ class Game:
             choices = self.base_actions
             return text, choices
 
-        choices = [yes, no]
+        if room.dead_body:
+            text =  text + "And in the center of the room there is a dead body."
+            text =  text + "Would you like to take a closer look? Yes or no?"
+            choices = [yes, no]
+
         return text, choices
 
     def search(self):
@@ -98,8 +100,9 @@ class Game:
         self.rooms.remove(current_location)
         choices = []
         for room in self.rooms:
-            room.move_to.__name__ = room.name # Change the __name__ so that the button will be labeled properly
-            choices.append(room.move_to)
+            choice = lambda r=room: r.move_to()
+            choice.__name__ = room.name
+            choices.append(choice)
         self.rooms.append(current_location)
         text = "Which room would you like to move to?"
         return text, choices
@@ -110,25 +113,27 @@ class Game:
         text = "Who would you like to talk to?"
         if len(room.characters_present) == 0:
             text = "There's no one here to talk to."
+            choices = self.base_actions
             return text, choices
         for suspect in room.characters_present:
-            suspect.talk_to.__name__ = suspect.name
-            choices.append(suspect.talk_to)
+            choice = lambda s=suspect: s.talk_to()
+            choice.__name__ = suspect.name
+            choices.append(choice)
         return text, choices
     
     def accuse(self):
         choices = []
         for suspect in self.suspects:
-            suspect.accuse.__name__ = suspect.name
-            choices.append(suspect.accuse)
+            choice = lambda s=suspect: s.accuse_murderer()
+            choice.__name__ = suspect.name
+            choices.append(choice)
         text = "Who do you think dunit?"
         return text, choices
 
     def end(self):
-        choices = []
-        text = "Are you sure that it was %s with %s." % (self.murderer_choice, self.murder_weapon_choice)
+        text = "Are you sure that it was %s with %s." % (self.murderer_choice.name, self.murder_weapon_choice.name)
         
-        def yes(self):
+        def yes():
             choices = []
             self.playing = False
             if self.murderer_choice.is_the_murderer and self.murder_weapon_choice.is_the_murder_weapon:
@@ -139,9 +144,10 @@ class Game:
                 text = self.missed_murderer_end
             elif self.murderer_choice.is_the_murderer == False and self.murder_weapon_choice.is_the_murder_weapon == False:
                 text = self.bad_end
+            text = text.replace("!sus!", self.murderer_choice.name).replace("!wep!", self.murder_weapon_choice.name)
             return text, choices
 
-        def no(self):
+        def no():
             choices = self.base_actions
             text = "You're not sure. You better gather more evidence."
             return text, choices
