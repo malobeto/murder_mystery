@@ -7,20 +7,63 @@ from tkinter import scrolledtext
 from murder_mystery import gui_game as game
 
 
-class MainWindow:
-	welcome_text = "Welcome to my game! What would you like to do?"
+#class MenuBar:
+	#def __init__(self, master):
+	#	self.master = master
+
+	#	self.menu = Menu(self.master)
+	#	self.master.config(menu=self.menu)
+
+	#	self.file_menu = Menu(self.menu)
+	#	self.file.add_command(label="Exit", command=self.quit)
+	#	self.menu.add_cascade(label="File", menu=self.file_menu)
+
+	#	self.game_menu = Menu(self.menu)
+	#	self.file.add_command(label="New Game", command=self.new_game)
+	#	self.menu.add_cascade(label="Game", menu=self.game_menu)
+
+	#def new_game(self):
+		# Need to figure out how to start a new game from this class that will clear widgets from whatever the active window is. I think I should move widgets in WindowTemplate to a class variable and then make sure clear sets the widgets
+		# list to []. Also make the menu a subclass of WindowTemplate
+
+	#def quit(self):
+		#self.master.quit()
+
+
+class WindowTemplate:
 	def __init__(self, master):
 		self.master = master
-		master.title("Welcome to the Murder Mystery game!")
+
+		self.widgets = []
+
+	def display(self):
+		for widget in self.widgets:
+			widget.pack()
+	
+	def clear(self):
+		for widget in self.widgets:
+			widget.destroy()
+
+
+
+class MainWindow(WindowTemplate):
+	welcome_text = "Welcome to my game! What would you like to do?"
+	def __init__(self, master):
+		super().__init__(master)
+		self.master.title("Welcome to the Murder Mystery game!")
 
 		self.text = Label(master, text=self.welcome_text)
-		self.text.pack()
+		self.widgets.append(self.text)
 
 		self.choose_game_button = Button(master, text="Play a Game", command=self.choose_game)
-		self.choose_game_button.pack()
+		self.widgets.append(self.choose_game_button)
 
 		self.create_game_button = Button(master, text="Write Your Own Game", command=self.create_game)
-		self.create_game_button.pack()
+		self.widgets.append(self.create_game_button)
+
+		#self.menu = MenuBar(self.master)
+
+		self.display()
 
 	def choose_game(self):
 		game_choice_window = ChooseGameWindow(self.master)
@@ -30,51 +73,45 @@ class MainWindow:
 		create_game_window = CreateGameSetWindow(self.master)
 		self.clear()
 
-	def clear(self):
-		self.text.destroy()
-		self.choose_game_button.destroy()
-		self.create_game_button.destroy()
 
 
-class ChooseGameWindow:
+class ChooseGameWindow(WindowTemplate):
 	path_to_game_sets = Path('murder_mystery/game_sets/')
 	game_sets = os.listdir(path_to_game_sets)
 	game_titles = [game[:-5].title() for game in game_sets]
 	def __init__(self, master):
-		self.master = master
-		master.title("Choose a Game Set")
+		super().__init__(master)
+		self.master.title("Choose a Game Set")
 
 		self.text = Label(master, text="Please choose a game set to play with!")
-		self.text.pack()
+		self.widgets.append(self.text)
 
 		self.clicked = StringVar()
 		self.drop = OptionMenu(master, self.clicked, *self.game_titles)
-		self.drop.pack()
+		self.widgets.append(self.drop)
 
 		self.start_button = Button(master, text=f"Start {self.clicked.get()}", command=self.start)
-		self.start_button.pack()
+		self.widgets.append(self.start_button)
+
+		self.display()
 	
 	def start(self):
 		game_window = GameWindow(self.master, self.clicked.get())
 		self.clear()
 
-	def clear(self):
-		self.text.destroy()
-		self.drop.destroy()
-		self.start_button.destroy()
 
-
-class GameWindow:
+class GameWindow(WindowTemplate):
 	def __init__(self, master, game_name):
-		self.master = master
+		super().__init__(master)
 		self.game = game.Game(game_name)
-		master.title(game_name)
+		self.master.title(game_name)
 
 		self.action_buttons = []
 
 		self.game_text = scrolledtext.ScrolledText(window, width=120, height=40)
-		self.game_text.pack()
+		self.widgets.append(self.game_text)
 
+		self.display()
 		self.display_actions([self.game.start])
 
 	def update_game(self, action):
@@ -107,9 +144,9 @@ class GameWindow:
 			button.pack(side=LEFT, padx=30)
 
 	def clear(self):
+		super().clear()
 		for b in self.action_buttons:
 			b.destory()
-		self.game_text.destory()
 
 
 
